@@ -1,0 +1,28 @@
+name: Python application test
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.8'
+    - name: Install dependencies
+      run: |
+        pip install requests
+        pip install pytest
+        pip install pytest-asyncio
+    - name: Test with pytest
+      run: pytest
+    - name: Run dynamic test
+      env:
+        TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN_1 }} 
+        TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID_1 }}
+        
+      run: |
+        python test-main.py
