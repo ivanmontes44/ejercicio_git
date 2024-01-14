@@ -1,6 +1,6 @@
 import asyncio
 import requests
-#jjjlllssssssss
+
 def check_port_status(url):
     try:
         response = requests.get(url, timeout=10)
@@ -18,7 +18,7 @@ async def send_telegram_message(token, chat_id, message): # función asincrona
     bot = telegram.Bot(token=token)
     await bot.send_message(chat_id=chat_id, text=message) # pausa la ejecucion de la funcion asincrona
 
-def monitor_website(url, interval, telegram_token, test_mode=False):
+def monitor_website(url, interval, telegram_token, telegram_chat_id, test_mode=False):
     import time
 
     # Inicia un bucle que se ejecuta una vez si test_mode es True, o indefinidamente si es False
