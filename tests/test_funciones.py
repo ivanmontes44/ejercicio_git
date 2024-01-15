@@ -10,7 +10,6 @@ def test_check_port_status():
 
 @pytest.mark.asyncio
 async def test_send_telegram_message():
-    # Utiliza valores de prueba para token y chat_id
     await send_telegram_message("dummy_token", "dummy_chat_id", "Mensaje de prueba")
     
 
